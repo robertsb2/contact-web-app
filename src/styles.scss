@@ -1,11 +1,10 @@
+@import 'variables';
+
 html,
 body {
   padding: 0;
   margin: 0;
-}
-html {
-    height: 100vh;
-    background-color: #fff;
+  height: 100%;
 }
 
 ul {
@@ -16,14 +15,8 @@ a {
   text-decoration: none;
 }
 
-body,
-input[type="text"],
-button {
-    color: #000;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-}
-
 .link {
   font-size: 1.2em;
-  color: #0d2c40;
+  font-family: $font-stack;
+  color: $primary-color;
 }
