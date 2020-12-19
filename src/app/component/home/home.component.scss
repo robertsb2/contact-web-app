@@ -1,0 +1,71 @@
+@import 'variables';
+
+.vertical-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.horizontal-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  flex: 1;
+  height: 100%;
+  background-image: url('/assets/images/address-book.jpg');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h1 {
+  color: $light-color;
+  font-family: $font-stack;
+  font-size: 3em;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 0 0 $primary-color, 0 -1px 0 $primary-color,
+    0 1px 0 $primary-color, -1px 0 0 $primary-color;
+}
+
+.content {
+  // display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-stack;
+  color: $primary-color;
+  text-align: center;
+}
+
+.header-title {
+  flex: 2;
+}
+.header-login {
+  flex: 0.5;
+  justify-content: flex-end;
+  margin-right: 30px;
+}
+
+.oval-button {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.oval-button:hover {
+  background-color: $secondary-color;
+  color: $light-color;
+}
