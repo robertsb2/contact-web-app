@@ -1,0 +1,33 @@
+.navbar-custom {  
+  margin: 0;
+  padding: 10px;
+  font-family: Rockwell, Courier Bold, Courier, Georgia, Times, Times New Roman,
+    serif;
+  height: 50px;
+}
+
+.navbar-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  flex: 1;
+  font-size: 1.7em;
+  font-style: italic;
+  font-weight: bold;
+  color: #0d2c40;
+}
+
+.nav-item {
+  flex: 1;
+}
+.link {
+  font-size: 1.2em;
+  color: #0d2c40;
+}
+
+a:hover {
+  color: #0d2c40;
+}

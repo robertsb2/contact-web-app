@@ -1,0 +1,15 @@
+<nav class="navbar-custom">
+    <div class="navbar-content">
+        <div class="navbar-brand">
+            <a class="link" routerLink="home">Address Book</a>
+        </div>
+        <div class="navbar-item">
+            <ng-container *ngIf="currentUser; else second">
+                <a class="link" style="cursor:pointer" (click)="logout()">Sign Out</a>
+            </ng-container>
+            <ng-template #second>
+                <a class="link" style="cursor:pointer" routerLink="login">Sign In</a>
+            </ng-template>
+        </div>
+    </div>
+</nav>
