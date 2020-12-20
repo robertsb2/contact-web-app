@@ -1,9 +1,12 @@
+@import 'variables';
+
 .navbar-custom {  
   margin: 0;
   padding: 10px;
-  font-family: Rockwell, Courier Bold, Courier, Georgia, Times, Times New Roman,
-    serif;
-  height: 50px;
+  font-family: $font-stack;
+  height: auto;
+  padding: 15px;
+  background-color: $light-color;
 }
 
 .navbar-content {
@@ -15,9 +18,7 @@
 .navbar-brand {
   flex: 1;
   font-size: 1.7em;
-  font-style: italic;
-  font-weight: bold;
-  color: #0d2c40;
+  color: $primary-color;
 }
 
 .nav-item {
@@ -25,9 +26,5 @@
 }
 .link {
   font-size: 1.2em;
-  color: #0d2c40;
-}
-
-a:hover {
-  color: #0d2c40;
+  color: $primary-color;
 }

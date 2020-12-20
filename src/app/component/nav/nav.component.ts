@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from './../../service/user.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/model/user.model';
 
 @Component({
@@ -7,18 +10,37 @@ import { User } from 'src/app/model/user.model';
   styleUrls: ['./nav.component.scss']
 })
 
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, OnDestroy {
 
-  currentUser = new User('Demo User', 'Demo@Email.com');
+  private _currentUser$: Subscription;
+  public _currentUser: User | null;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+    ) {
+    this._currentUser = null;
+    this._currentUser$ = this.userService._currentUser.subscribe(
+      data => {
+        if (data) {
+          this._currentUser = data;
+
+        } else {
+          this.router.navigate(['']);
+        }
+      });
+  }
 
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    this._currentUser$.unsubscribe();
+  }
+
 
   logout(): void {
-
+    this.userService.logout();
   }
 
 }

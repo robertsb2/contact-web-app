@@ -10,8 +10,8 @@ import { Subscription } from 'rxjs';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+  private currentUser$: Subscription;
   user = { email: '', password: '' };
-  currentUser$: Subscription;
   hasLoginError: boolean;
 
   constructor(
