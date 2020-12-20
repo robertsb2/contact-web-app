@@ -1,9 +1,8 @@
 @import 'variables';
-
 html,
 body {
-  padding: 0;
   margin: 0;
+  padding: 0;
   height: 100%;
 }
 
@@ -26,6 +25,8 @@ input[type=submit] {
   border: 1px solid black;
   padding: 10px;
   border-radius: 20px;
+  transition: 0.3s;
+  width: fit-content;
 }
 
 .oval-button:hover,

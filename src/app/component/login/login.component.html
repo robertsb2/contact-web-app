@@ -7,17 +7,17 @@
                     <input type="text" name="email" placeholder="Email" required email [(ngModel)]="user.email"
                         #email="ngModel">
                     <div *ngIf="email.invalid && (email.touched)" class="alert">
-                        <div *ngIf="email.errors.required">
+                        <div *ngIf="email.errors?.required">
                             Email is required.
                         </div>
-                        <div *ngIf="email.errors.email">
+                        <div *ngIf="email.errors?.email">
                             Email format is invalid.
                         </div>
                     </div>
                     <input type="password" name="passwd" placeholder="Password" required [(ngModel)]="user.password"
                         #pass="ngModel">
                     <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="alert">
-                        <div *ngIf="pass.errors.required">
+                        <div *ngIf="pass.errors?.required">
                             Password is required.
                         </div>
                     </div>
