@@ -20,3 +20,20 @@ a {
   font-family: $font-stack;
   color: $primary-color;
 }
+
+.oval-button,
+input[type=submit] {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.oval-button:hover,
+input[type=submit]:hover {
+  background-color: $secondary-color;
+  color: $light-color;
+}
+
+.wide-button {
+  width: 50px;
+}
