@@ -1,10 +1,10 @@
 @import 'variables';
 
 .phone-bg {
-    background-image: url('/assets/images/phone-bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 60%;
+  background-image: url('/assets/images/phone-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 60%;
 }
 
 .vertical-container {
@@ -26,25 +26,30 @@
 }
 
 .login-box {
-    border: 1px solid $primary-color;
-    border-radius: 10px;
-    background-color: $light-color;
-    padding: 60px;
-    width: 280px;
-    font-family: $font-stack;
-    color: $primary-color;
-    text-align: center;
+  border: 1px solid $primary-color;
+  border-radius: 10px;
+  background-color: $light-color;
+  padding: 60px;
+  width: 280px;
 }
 
-form {
-    width: 100%;
+.login-content {
+  width: 100%;
+  font-family: $font-stack;
+  color: $primary-color;
+  text-align: center;
+  font-size: 14px;
 }
 
 .alert {
-    color: $error-color
+  color: $error-color;
 }
 
-input {
-    margin: 10px;
-    width: 65%;
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.wide-button {
+  align-self: center;
 }
