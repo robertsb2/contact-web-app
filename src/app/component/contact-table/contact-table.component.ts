@@ -1,10 +1,13 @@
-import { ModalComponent } from './../modal/modal.component';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Contact } from 'src/app/model/contact.model';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+
+import { ModalComponent } from './../modal/modal.component';
+
 import { UserService } from 'src/app/service/user.service';
 import { ContactService } from 'src/app/service/contact.service';
-import { Subscription } from 'rxjs';
-import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+
+import { Contact } from 'src/app/model/contact.model';
 
 
 @Component({

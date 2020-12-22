@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { User } from '../model/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+
+import { User } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,9 @@ export class UserService {
   private _currentUser$: BehaviorSubject<User | null>;
   public _currentUser: Observable<User | null>;
   public authenticationErrorEvent = new EventEmitter();
-  devMode = true;
 
   constructor() {
     const user = localStorage.getItem('currentUser');
-    console.log(user);
     if (user) {
       this._currentUser$ = new BehaviorSubject<User | null>(JSON.parse(user));
     } else {
@@ -26,9 +25,7 @@ export class UserService {
   login(data: { email: string; passwd: string; }): void {
 
     // For demo use only. Production application would use a back end to manage legitamate users
-    if (this.devMode) {
-      this._currentUser$.next(new User('jdos893j587hd', 'Demo User', 'email@email.com'));
-    } else if (data.email && data.passwd) {
+    if (data.email && data.passwd) {
       this._currentUser$.next(new User('jdos893j587hd', 'Demo User', data.email));
     } else {
       this.authenticationErrorEvent.emit('Invalid Credentials');
