@@ -1,7 +1,9 @@
 import { Router } from '@angular/router';
-import { UserService } from './../../service/user.service';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +16,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   user = { email: '', password: '' };
   hasLoginError: boolean;
 
+  form: FormGroup;
   constructor(
     private userService: UserService,
     private router: Router
   ) {
     this.hasLoginError = false;
 
+    /* Subscribes to the UserService to get the current logged in user
+       Reroutes if already logged in */
     this.currentUser$ = this.userService._currentUser.subscribe(
       data => {
         if (data) {
@@ -31,11 +36,17 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
     );
 
+    // Subscribes to the UserService to listen for Authentication Error Events
     this.userService.authenticationErrorEvent.subscribe(
       (err: any) => {
         this.hasLoginError = true;
         console.log(err);
       });
+
+    this.form = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl('')
+    });
   }
 
   ngOnInit(): void {
@@ -46,9 +57,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
-  onClickSubmit(data: { email: string; passwd: string; }): void {
+  onSubmit(): void {
     this.hasLoginError = false;
-    this.userService.login(data);
+    this.userService.login(this.form.value);
   }
 
 }

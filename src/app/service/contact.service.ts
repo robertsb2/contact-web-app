@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { Contact } from '../model/contact.model';
 import * as data from '../data/contacts.json';
 
@@ -12,6 +13,7 @@ export class ContactService {
 
   constructor() { }
 
+  // Creates a unique identifier for the created contact and saves to in memory array
   addContact(contact: Contact): Array<Contact> {
     let contactIndex = -1;
     let uniqueId = '';
@@ -25,10 +27,14 @@ export class ContactService {
 
   }
 
+  /* Returns in-memory contact list populated with dummy data
+     userID would typically be used by the backend, but is ignored for this demo
+  */
   getContactsByUserId(userId: string): Array<Contact> {
     return this.inMemoryContactList;
   }
 
+  // Updates existing contact with matching id
   updateContact(contact: Contact): Array<Contact> {
     const contactIndex = this.inMemoryContactList.findIndex(c => c.id === contact.id);
     if (contactIndex > -1) {
@@ -37,6 +43,7 @@ export class ContactService {
     return this.inMemoryContactList;
   }
 
+  // Deletes an existing contact with matching id
   deleteContact(contact: Contact): Array<Contact> {
     const contactIndex = this.inMemoryContactList.findIndex(c => c.id === contact.id);
     if (contactIndex > -1) {
@@ -45,6 +52,7 @@ export class ContactService {
     return this.inMemoryContactList;
   }
 
+  // Generates a random id for new contacts
   private generateRandomId(): string {
     let result = '';
     const idLength = 10;

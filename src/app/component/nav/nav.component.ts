@@ -1,7 +1,9 @@
 import { Router } from '@angular/router';
-import { UserService } from './../../service/user.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+
+import { UserService } from 'src/app/service/user.service';
+
 import { User } from 'src/app/model/user.model';
 
 @Component({
@@ -18,7 +20,7 @@ export class NavComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private userService: UserService
-    ) {
+  ) {
     this._currentUser = null;
     this._currentUser$ = this.userService._currentUser.subscribe(
       data => {

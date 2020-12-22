@@ -1,15 +1,20 @@
-import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { UserService } from './user.service';
+
 @Injectable({
   providedIn: 'root'
 })
+
+// AuthGuardService handles route protection. Only authenticated users can access protected routes.
 export class AuthGuardService implements CanActivate {
 
   private isAuthenticated = false;
   private currentUser$: Subscription;
+
+
   constructor(
     private router: Router,
     private userService: UserService

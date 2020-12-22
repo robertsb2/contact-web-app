@@ -1,30 +1,16 @@
 <div class="vertical-container phone-bg">
     <div class="horizontal-container">
         <div class="login-box">
-            <div class="vertical-container">
+            <div class="login-content">
                 <h2>Log In</h2>
-                <form #login="ngForm" (ngSubmit)="onClickSubmit(login.value)">
-                    <input type="text" name="email" placeholder="Email" required email [(ngModel)]="user.email"
-                        #email="ngModel">
-                    <div *ngIf="email.invalid && (email.touched)" class="alert">
-                        <div *ngIf="email.errors?.required">
-                            Email is required.
-                        </div>
-                        <div *ngIf="email.errors?.email">
-                            Email format is invalid.
-                        </div>
-                    </div>
-                    <input type="password" name="passwd" placeholder="Password" required [(ngModel)]="user.password"
-                        #pass="ngModel">
-                    <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="alert">
-                        <div *ngIf="pass.errors?.required">
-                            Password is required.
-                        </div>
-                    </div>
-                    <input class=".oval-button wide-button" type="submit" value="Submit">
-                    <div *ngIf="hasLoginError" class="alert">
-                        The email or password entered is incorrect
-                    </div>
+                <form [formGroup]="form" class="content" (ngSubmit)="onSubmit()">
+                    <mat-form-field>
+                        <input matInput type="text" placeholder="Email" required email formControlName="email">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Password" type="password" required formControlName="password">
+                    </mat-form-field>
+                    <input class=".oval-button wide-button" [disabled]=!form.valid type="submit" value="Submit">
                 </form>
             </div>
         </div>
