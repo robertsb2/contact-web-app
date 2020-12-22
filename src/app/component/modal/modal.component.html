@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>{{description}}</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-dialog-content class="content">
+        <input type="hidden" formControlName="id">
+        <mat-form-field>
+            <input matInput placeholder="Name" required formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Address" required formControlName="address">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Email" required email formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Phone" required phone formControlName="phone">
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="footer">
+        <div class="footer-item">
+            <button class="oval-button" type="button" (click)="closeModal()">Cancel</button>
+            <button class="oval-button confirm-button" [disabled]=!form.valid type="submit">Save Changes</button>
+        </div>
+        <div class="footer-item">
+            <button *ngIf="existingContact" type="button" class="oval-button danger-button"
+                (click)="deleteContact()">Delete
+                Contact</button>
+        </div>
+    </mat-dialog-actions>
+</form>

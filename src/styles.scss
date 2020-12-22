@@ -1,4 +1,6 @@
 @import 'variables';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 html,
 body {
   margin: 0;
@@ -6,8 +8,8 @@ body {
   height: 100%;
 }
 
-ul {
-    list-style: none;
+ul {  
+  list-style: none;
 }
 
 a {
@@ -21,20 +23,43 @@ a {
 }
 
 .oval-button,
-input[type=submit] {
+input[type='submit'] {
   border: 1px solid black;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 15px;
   transition: 0.3s;
   width: fit-content;
 }
 
 .oval-button:hover,
-input[type=submit]:hover {
+input[type='submit']:hover {
   background-color: $secondary-color;
   color: $light-color;
 }
 
-.wide-button {
-  width: 50px;
+.confirm-button:hover{
+  background-color: $confirm-color;
+  color: $light-color;
+}
+
+.danger-button:hover {
+  background-color: $danger-color;
+  color: $light-color;
+}
+
+input[type='text'],
+input[type='password'] {
+  box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 100%;
+	padding: 7px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 45px
 }

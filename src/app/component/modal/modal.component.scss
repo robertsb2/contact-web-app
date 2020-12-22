@@ -1,0 +1,18 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-item {
+  flex: 1;
+  text-align: center;
+}
+
+.oval-button {
+  margin: 10px;
+}

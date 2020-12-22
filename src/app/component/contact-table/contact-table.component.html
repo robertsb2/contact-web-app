@@ -1,7 +1,7 @@
 <div class="vertical-container">
     <div class="horizontal-container">
         <div class="add-button">
-            <div class="oval-button" onclick="AddContact()">New Contact</div>
+            <div class="oval-button" (click)="addContact()">New Contact</div>
         </div>
         <div class="search">
             <input type="text" placeholder="Search" [(ngModel)]="searchTerm" (keyup)="applySearchFilter()">
@@ -14,7 +14,7 @@
             <th class="col-3">email</th>
             <th class="col-4">phone</th>
         </tr>
-        <tr *ngFor = "let contact of filteredContacts" class="row">
+        <tr *ngFor = "let contact of filteredContacts" class="row" (click)="editContact(contact.id)">
             <td class="col-1">{{contact.name}}</td>
             <td class="col-2">{{contact.address}}</td>
             <td class="col-3">{{contact.email}}</td>
