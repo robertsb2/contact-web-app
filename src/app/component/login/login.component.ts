@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {
     this.hasLoginError = false;
 
+    /* Subscribes to the UserService to get the current logged in user
+       Reroutes if already logged in */
     this.currentUser$ = this.userService._currentUser.subscribe(
       data => {
         if (data) {
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
     );
 
+    // Subscribes to the UserService to listen for Authentication Error Events
     this.userService.authenticationErrorEvent.subscribe(
       (err: any) => {
         this.hasLoginError = true;
@@ -54,9 +57,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
-  onClickSubmit(data: { email: string; passwd: string; }): void {
+  onSubmit(): void {
     this.hasLoginError = false;
-    this.userService.login(data);
+    this.userService.login(this.form.value);
   }
 
 }

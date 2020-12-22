@@ -13,6 +13,8 @@ export class UserService {
   public authenticationErrorEvent = new EventEmitter();
 
   constructor() {
+
+    // Checks for previously authenticated user token to skip login
     const user = localStorage.getItem('currentUser');
     if (user) {
       this._currentUser$ = new BehaviorSubject<User | null>(JSON.parse(user));
@@ -22,16 +24,17 @@ export class UserService {
     this._currentUser = this._currentUser$.asObservable();
   }
 
-  login(data: { email: string; passwd: string; }): void {
+  login(data: { email: string; password: string; }): void {
 
     // For demo use only. Production application would use a back end to manage legitamate users
-    if (data.email && data.passwd) {
+    if (data.email && data.password) {
       this._currentUser$.next(new User('jdos893j587hd', 'Demo User', data.email));
     } else {
       this.authenticationErrorEvent.emit('Invalid Credentials');
       return;
     }
 
+    // For simplicity's sake, I'm storing the full user here, but I'd realistically use an auhentication token from the backend.
     localStorage.setItem('currentUser', JSON.stringify(this._currentUser$.getValue()));
   }
 
@@ -40,9 +43,9 @@ export class UserService {
     localStorage.removeItem('currentUser');
   }
 
-  /* I would normally include registration functionality,
-    but since this demo is all in memory it would be identical the login method */
-  register(data: { email: string; passwd: string; }): void {
+  /* I would normally include separate registration functionality,
+    but since this demo is all in memory it would be identical to the login method */
+  register(data: { email: string; password: string; }): void {
     this.login(data);
   }
 

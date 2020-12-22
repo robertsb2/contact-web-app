@@ -30,6 +30,9 @@ export class ContactTableComponent implements OnInit, OnDestroy {
     private userService: UserService,
     public matDialog: MatDialog
   ) {
+
+    /* Subscibes to the UserService to get logged in user.
+       User's id is used to query for their contacts */
     this._currentUser$ = this.userService._currentUser.subscribe(
       data => {
         if (data) {
@@ -46,11 +49,15 @@ export class ContactTableComponent implements OnInit, OnDestroy {
     this._currentUser$.unsubscribe();
   }
 
+  // Apply's a search filter to display contacts with property values that match the search term
   applySearchFilter(): void {
     this.filteredContacts = this.contacts.filter((data) => JSON.stringify(data)
       .toLowerCase().indexOf(this.searchTerm.toLowerCase()) !== -1);
   }
 
+  /* Opens dialog with form to add new contact.
+     Completed forms are send to ContactService for processing
+  */
   addContact(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -70,6 +77,9 @@ export class ContactTableComponent implements OnInit, OnDestroy {
     });
   }
 
+  /* Opens dialog with form to edit/delete new contact.
+     Completed forms are send to ContactService for processing
+  */
   editContact(contactId: string): void {
     const editSubject = this.contacts.find(c => c.id === contactId);
     const dialogConfig = new MatDialogConfig();

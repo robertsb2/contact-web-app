@@ -3,7 +3,7 @@
         <div class="login-box">
             <div class="login-content">
                 <h2>Log In</h2>
-                <form [formGroup]="form" class="content" (ngSubmit)="onClickSubmit()">
+                <form [formGroup]="form" class="content" (ngSubmit)="onSubmit()">
                     <mat-form-field>
                         <input matInput type="text" placeholder="Email" required email formControlName="email">
                     </mat-form-field>
