@@ -71,7 +71,7 @@ export class ContactTableComponent implements OnInit, OnDestroy {
     const modalDialog = this.matDialog.open(ModalComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(result => {
       if (result.event === 'submit') {
-        this.contacts = this.contactService.addContact(result.data).sort((a, b) => a.name.localeCompare(b.name));;
+        this.contacts = this.contactService.addContact(result.data).sort((a, b) => a.name.localeCompare(b.name));
         this.filteredContacts = this.contacts;
       }
     });
@@ -95,10 +95,10 @@ export class ContactTableComponent implements OnInit, OnDestroy {
     const modalDialog = this.matDialog.open(ModalComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(result => {
       if (result.event === 'submit') {
-        this.contacts = this.contactService.updateContact(result.data).sort((a, b) => a.name.localeCompare(b.name));;
+        this.contacts = this.contactService.updateContact(result.data).sort((a, b) => a.name.localeCompare(b.name));
         this.filteredContacts = this.contacts;
       } else if (result.event === 'delete') {
-        this.contacts = this.contactService.deleteContact(result.data).sort((a, b) => a.name.localeCompare(b.name));;
+        this.contacts = this.contactService.deleteContact(result.data).sort((a, b) => a.name.localeCompare(b.name));
         this.filteredContacts = this.contacts;
       }
     });

@@ -12,7 +12,7 @@
             <input matInput placeholder="Email" required email formControlName="email">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Phone" required formControlName="phone">
+            <input matInput placeholder="Phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required formControlName="phone">
         </mat-form-field>
     </mat-dialog-content>
 
